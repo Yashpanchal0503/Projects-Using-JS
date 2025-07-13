@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+    font-family: degular, sans-serif;
+    font-style: normal;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+}
+.stopwatch{
+    
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url(https://wallpapercave.com/wp/wp2506828.jpg);
+    background-size: cover;
+    background-position: center;
+}
+.stopwatch h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 550px;
+    display: flex;
+    color: white;
+    font-size: 275px;
+
+    
+}
+.stopwatch .button{
+    display: flex;
+    width: 80%;
+    justify-content:space-evenly;
+    align-items: center;
+    margin: auto;
+    
+}
+.stopwatch .button p{
+    height: 50px;
+    width: 150px;
+    border-radius:10px;
+    background-color: black;
+    color: white;
+    outline: 0;
+    border: 2px solid white;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.stopwatch .button p:hover{
+    font-size: 35px;
+    border-color: green;
+}
+.stopwatch .button p:active{
+    color: green;
+}
