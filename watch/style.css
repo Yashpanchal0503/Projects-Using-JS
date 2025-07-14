@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: degular, sans-serif;
+  font-style: normal;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+.stopwatch {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(https://wallpapercave.com/wp/wp2506828.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#displayTime {
+  color: white;
+  font-size: 325px;
+}
