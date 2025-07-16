@@ -1,0 +1,142 @@
+/* Reset and base font */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  color: #0ff;
+  
+}
+
+.container {
+  width: 90%;
+  max-width: 400px;
+  padding: 25px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #000;
+  border-radius: 15px;
+  border: 2px solid #0ff;
+
+  /* Stronger 3D glow effect outside */
+
+   box-shadow:
+       0 6px 15px rgba(0, 255, 255, 0.7),
+       0 0 25px rgba(0, 255, 255, 0.5),
+       6px 6px 25px rgba(0, 0, 0, 0.8);
+    
+    transition:  box-shadow 0.3s;
+  &:hover{
+    
+     box-shadow:
+        0 12px 30px rgba(0, 255, 255, 0.9),
+        0 0 40px rgba(0, 255, 255, 0.6),
+        12px 12px 40px rgba(0, 0, 0, 0.85);
+
+  }
+}
+
+
+/* Header text */
+.container p {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 12px;
+  text-align: center;
+  color: #0ff;
+  text-shadow: 0 0 5px #0ff;
+}
+
+/* Input styling */
+.container input {
+  width: 100%;
+  height: 50px;
+  border: 2px solid #0ff;
+  background: #000;
+  color: #0ff;
+  outline: none;
+  padding: 10px;
+  margin: 10px 0 20px;
+  border-radius: 8px;
+  transition: box-shadow 0.3s;
+}
+.container input::placeholder{
+    color: #0ff
+}
+
+.container input:focus {
+  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff inset;
+}
+
+
+.container button {
+  width: 100%;
+  height: 50px;
+  background: #0ff;
+  color: #000;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: background 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff inset;
+}
+
+.container button:hover {
+  background: #00f7ff;
+  box-shadow: 0 0 20px #00f7ff, 0 0 40px #00f7ff inset;
+}
+
+/* QR Image Box */
+#imgBox {
+  width: 200px;
+  border-radius: 10px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1s ease;
+  margin: 0 auto;
+}
+
+#imgBox.show-img {
+  max-height: 300px;
+  margin: 20px auto;
+  border: 2px solid #0ff;
+  box-shadow: 0 0 20px #0ff;
+  padding: 10px;
+  background: #000;
+}
+
+#imgBox img {
+  width: 100%;
+  display: block;
+  filter: drop-shadow(0 0 10px #0ff);
+}
+
+/* Error animation */
+.error {
+  border: 2px solid #f0f !important;
+  animation: shake 0.1s linear 10;
+  color: #f0f !important;
+}
+
+.error::placeholder {
+  color: #f0f !important;
+}
+
+
+/* Shake keyframes */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  50% { transform: translateX(0); }
+  75% { transform: translateX(3px); }
+  100% { transform: translateX(0); }
+}
