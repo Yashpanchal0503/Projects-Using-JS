@@ -1,8 +1,8 @@
 // Constants
-const foodSound = new Audio('music/food.mp3');
-const gameOverSound = new Audio('music/gameover.mp3');
-const moveSound = new Audio('music/move.mp3');
-const MusicSound = new Audio('music/music.mp3');
+const foodSound = new Audio('SnakeGame/music/food.mp3');
+const gameOverSound = new Audio('SnakeGame/music/gameover.mp3');
+const moveSound = new Audio('SnakeGame/music/move.mp3');
+const MusicSound = new Audio('SnakeGame/music/music.mp3');
 
 
 let direction = { x: 0, y: 0 };
