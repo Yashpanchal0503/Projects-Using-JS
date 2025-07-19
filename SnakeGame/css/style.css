@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+}
+.body{
+    background:  url("../img/bg.jpg");
+    min-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#board{
+    background: linear-gradient(rgb(124, 217, 124),rgb(229, 229, 93));
+    width: 85vmin;
+    height: 85vmin;
+    border:2px solid black;
+    display: grid;
+    grid-template-columns: repeat(18,1fr);
+    grid-template-rows: repeat(18,1fr);
+}
+/* Snake Body Segment */
+.snake {
+    background: linear-gradient(to right, #3e8e41, #2e7031);
+    border: 0.2vmin solid #1a3e1a;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    box-shadow: inset 0 0 2px #0f3f1f;
+    transition: transform 0.1s ease;
+}
+/* Snake Head */
+.head {
+    background: radial-gradient(ellipse at 40% 40%, #2e7d32, #1b5e20);
+    border: 0.25vmin solid #0a3012;
+    border-radius: 45% 45% 55% 55%;
+    box-shadow: 0 0 10px #1a4f1a;
+    transform: scale(1.1);
+    position: relative;
+}
+
+/* Eyes */
+.head::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 
+        12px 0 white,
+        2px 2px 0 1px black,
+        14px 2px 0 1px black;
+}
+
+/* Tongue Flicker Animation (Subtle Realistic Forked Tongue) */
+.head::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 15px;
+    background: red;
+    border-radius: 1px;
+    opacity: 0;
+    animation: tongueFlick 1.2s infinite ease-in-out;
+    clip-path: polygon(
+        50% 0%,   /* tip */
+        60% 70%,  /* right fork */
+        100% 100%,/* bottom right */
+        50% 85%,  /* center base */
+        0% 100%,  /* bottom left */
+        40% 70%   /* left fork */
+    );
+}
+
+@keyframes tongueFlick {
+    0%, 100% {
+        transform: translateX(-50%) scaleY(0.2);
+        opacity: 0;
+    }
+    10% {
+        transform: translateX(-50%) scaleY(1);
+        opacity: 0.7;
+    }
+    30% {
+        transform: translateX(-50%) scaleY(0.8);
+        opacity: 0.5;
+    }
+    50%, 100% {
+        transform: translateX(-50%) scaleY(0);
+        opacity: 0;
+    }
+}
+
+
+.food {
+    background: radial-gradient(circle at 40% 40%, #ff4d4d, #b30000);
+    border: 0.25vmin solid #800000;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 10px #ff1a1a;
+    animation: foodPulseClassic 2s infinite ease-in-out;
+    transform-origin: center;
+}
+
+
+
+
+/* Apple Stem */
+.food::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 8px;
+    background: #3d3d00;
+    border-radius: 2px;
+}
+
+@keyframes foodPulseClassic {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 10px #ff1a1a;
+    }
+    20% {
+        transform: scale(1.5); /* Quick grow */
+        box-shadow: 0 0 20px #ff4d4d;
+    }
+    100% {
+        transform: scale(1); /* Slow shrink */
+        box-shadow: 0 0 10px #ff1a1a;
+    }
+}
+
+
+
+#score{
+    position: absolute;
+    top: 5%;
+    right: 10%;
+    font-size: 39px;
+    font-weight: bold;
+    font-family: 'New Tegomin', serif;
+}
+
+#highScore{
+    position: absolute;
+    top: 11%;
+    right: 1%;
+    font-size: 39px;
+    font-weight: bold;
+    font-family: 'New Tegomin', serif;
+}
+
+
+#controls {
+    position: absolute;
+    top: 21%;
+    right: 13%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#controls button {
+    padding: 10px 15px;
+    font-size: 18px;
+    font-family: 'New Tegomin', serif;
+    border: 2px solid #333;
+    border-radius: 10px;
+    background: #fffbe6;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+#controls button:hover {
+    background-color: #f4e842;
+    box-shadow: 0 0 12px #d4b300;
+}
