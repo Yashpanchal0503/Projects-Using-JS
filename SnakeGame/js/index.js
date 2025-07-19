@@ -1,12 +1,13 @@
 // Constants
-const foodSound = new Audio('../music/food.mp3');
-const gameOverSound = new Audio('../music/gameover.mp3');
-const moveSound = new Audio("../music/move.mp3");
-const MusicSound = new Audio('../music/music.mp3');
+const foodSound = new Audio('music/food.mp3');
+const gameOverSound = new Audio('music/gameover.mp3');
+const moveSound = new Audio('music/move.mp3');
+const MusicSound = new Audio('music/music.mp3');
+
 
 let direction = { x: 0, y: 0 };
 let inputDir = { x: 0, y: 0 };
-let speed = 7;
+let speed = 6;
 let lastPaintTime = 0;
 let score = 0;
 let flag = false;
@@ -70,6 +71,7 @@ function gameEngine() {
         inputDir = { x: 0, y: 0 };
         snakeArr = [{ x: 13, y: 15 }];
         score = 0;
+        speed=6;
         flag = false;
         scoreBox.innerHTML = "Score: " + score;
         if(musicBtn.innerText === '🔇 Music'){
@@ -81,6 +83,9 @@ function gameEngine() {
     if (snakeArr[0].x === food.x && snakeArr[0].y === food.y) {
         foodSound.play();
         score++;
+        if(score%5==0){
+            speed+=0.5;
+        }
         if (score > highScoreVal) {
             highScoreVal = score;
             localStorage.setItem("highScore", JSON.stringify(highScoreVal));
