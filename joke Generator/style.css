@@ -1,0 +1,128 @@
+/* Reset and base font */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Rubik', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  color: #0ff;
+  
+}
+
+.container {
+  width: 90%;
+  max-width: 80vmin;
+  padding: 25px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #000;
+  border-radius: 15px;
+  border: 2px solid #0ff;
+
+  /* Stronger 3D glow effect outside */
+
+   box-shadow:
+       0 6px 15px rgba(0, 255, 255, 0.7),
+       0 0 25px rgba(0, 255, 255, 0.5),
+       6px 6px 25px rgba(0, 0, 0, 0.8);
+    
+    transition: transform 0.3s ease, box-shadow 0.3s;
+  &:hover{
+    transform: translate(-50%, -52%) scale(1.02);
+     box-shadow:
+        0 12px 30px rgba(0, 255, 255, 0.9),
+        0 0 40px rgba(0, 255, 255, 0.6),
+        12px 12px 40px rgba(0, 0, 0, 0.85);
+
+  }
+}
+
+.container span {
+  display: block;
+  text-align: center;
+  font-size: 100px;
+  color: #0ff;
+  text-shadow: 0 0 60px #0ff;
+}
+
+.container p{
+  font-size: 16px;
+  color: #0ff;
+  font-weight: 400;
+  text-align: center;
+  word-wrap: break-word;
+  line-height: 35px;
+  margin:30px 0;
+}
+
+.container .btn{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.container button {
+  display: block;
+  padding: 12px 25px;
+  margin: 0 auto;
+  font-size: 18px;
+  background: #0ff;
+  color: #000;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: background 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff inset;
+}
+
+.container button:hover {
+  background: #00f7ff;
+  box-shadow: 0 0 20px #00f7ff, 0 0 40px #00f7ff inset;
+}
+
+.typing::after {
+  content: '|';
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+
+
+
+body.light-theme {
+  background: #fab22e;
+  color: #222;
+}
+
+body.light-theme .container {
+  background: black;
+  border-color: black;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme #joke {
+
+  color: white;
+}
+
+body.light-theme .container span {
+  color: #444;
+  text-shadow: none;
+}
+
+body.light-theme .container button {
+  background: #fab22e;
+  color: black;
+  box-shadow: 0 0 10px #ccc;
+}
