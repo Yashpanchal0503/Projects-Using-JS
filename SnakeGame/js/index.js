@@ -1,8 +1,8 @@
 // Constants
-const foodSound = new Audio('SnakeGame/music/food.mp3');
-const gameOverSound = new Audio('SnakeGame/music/gameover.mp3');
-const moveSound = new Audio('SnakeGame/music/move.mp3');
-const MusicSound = new Audio('SnakeGame/music/music.mp3');
+const foodSound = new Audio('music/food.mp3');
+const gameOverSound = new Audio('music/gameover.mp3');
+const moveSound = new Audio('music/move.mp3');
+const MusicSound = new Audio('music/music.mp3');
 
 
 let direction = { x: 0, y: 0 };
@@ -130,10 +130,14 @@ function gameEngine() {
 }
 
 // Start game
-MusicSound.play();
-window.requestAnimationFrame(main);
+let musicStarted = false;
 
 window.addEventListener('keydown', e => {
+    if (!musicStarted) {
+        MusicSound.play().catch(err => console.warn("Autoplay blocked:", err));
+        musicStarted = true;
+    }
+
     moveSound.play();
     switch (e.key) {
         case "ArrowUp":
@@ -149,16 +153,50 @@ window.addEventListener('keydown', e => {
             if (inputDir.x !== -1) inputDir = { x: 1, y: 0 };
             break;
     }
+
+    // Start game loop after first interaction
+    if (!gameStarted) {
+        window.requestAnimationFrame(main);
+        gameStarted = true;
+    }
 });
 
+let gameStarted = false;
+
+// Music toggle
 let musicPlaying = true;
 musicBtn.addEventListener('click', () => {
     musicPlaying = !musicPlaying;
     if (musicPlaying) {
-        MusicSound.play();
+        MusicSound.play().catch(err => console.warn("Autoplay blocked:", err));
         musicBtn.innerText = '🔇 Music';
     } else {
         MusicSound.pause();
         musicBtn.innerText = '🔊 Music';
     }
 });
+
+function drawInitialBoard() {
+    board.innerHTML = '';
+
+    // Draw Snake
+    snakeArr.forEach((e, index) => {
+        const snakeElement = document.createElement('div');
+        snakeElement.style.gridRowStart = e.y;
+        snakeElement.style.gridColumnStart = e.x;
+        snakeElement.classList.add(index === 0 ? 'head' : 'snake');
+        board.appendChild(snakeElement);
+    });
+
+    // Draw Food
+    const foodElement = document.createElement('div');
+    foodElement.style.gridRowStart = food.y;
+    foodElement.style.gridColumnStart = food.x;
+    foodElement.classList.add('food');
+    board.appendChild(foodElement);
+}
+
+// Call once on load
+window.onload = () => {
+    drawInitialBoard();
+};
